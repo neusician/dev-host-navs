@@ -76,8 +76,8 @@ http://127.0.0.1:5500/public/index.html
 
 ```yaml
 # 主站配置
-name: 我的导航站
-description: 一个简洁高效的链接导航网站，分组收录我的优质网站资源
+name: 站导
+description: 一个简洁高效的网站链接导航工具站
 
 # 配置数据调试输出(浏览器控制台)
 console_output: false
@@ -92,13 +92,13 @@ navs:
     description: 日常工作中常用的工具网站
     items:
       - name: GitHub
-        short_name: GIT    # 可选，文字图标简称（最多4字符）
+        short_name: GIT # 可选，文字图标简称（最多4字符）
         description: GitHub代码托管平台
         nav_to: https://github.com
-      - name: ChatGPT
-        short_name: GPT
-        description: OpenAI开发的AI对话助手
-        nav_to: https://chat.openai.com
+      - name: VS Code
+        short_name: CODE
+        description: VS Code开源代码编辑器
+        nav_to: https://code.visualstudio.com/
 ```
 
 ### 配置项说明
@@ -255,7 +255,19 @@ server {
 
 - 已添加工作流文件：`.github/workflows/deploy-gh-pages.yml`。
 - 部署行为：每次 push 到 `main` 分支时，工作流会把 `public/` 目录发布到 GitHub Pages（`gh-pages` 分支）。
-- 无需额外 secret（使用内置 `${{ secrets.GITHUB_TOKEN }}`）。
+- 默认使用内置 `${{ secrets.GITHUB_TOKEN }}`；如果工作流报错 `Permission to ... denied to github-actions[bot]`，请参考下面的故障排查步骤。
+
+#### 故障排查：`Permission to ... denied to github-actions[bot]`
+
+可能原因与解决办法：
+
+- 工作流权限不足：确保工作流声明了 `permissions: contents: write`（已在 `.github/workflows/deploy-gh-pages.yml` 中设置）。
+- 受保护分支/策略限制：如果 `gh-pages` 分支启用了分支保护且禁止 GitHub Actions 推送，请在仓库设置中允许特定 Actions 或临时关闭保护策略；或者使用 PAT（见下）。
+- 使用专用令牌（更可靠）：创建一个 **Fine‑grained personal access token**（或经典 PAT），只给目标仓库 `Contents: Read & write`、`Pages` 等最小权限，添加到仓库 Secrets（例如命名为 `GH_PAGES_TOKEN`），然后在工作流中将 `peaceiris/actions-gh-pages` 的 `github_token` 参数换成 `${{ secrets.GH_PAGES_TOKEN }}`。
+
+示例：在仓库设置 → **Secrets** → **Actions** 中添加 `GH_PAGES_TOKEN`，生成时建议设置过期时间并只赋最小权限。
+
+---
 
 ### Vercel 部署
 
