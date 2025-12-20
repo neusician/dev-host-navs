@@ -7,8 +7,9 @@ on:
 jobs:
   deploy:
     runs-on: ubuntu-latest
+    # 需要写权限以便将文件 push 到 gh-pages 分支
     permissions:
-      contents: read
+      contents: write
       pages: write
       id-token: write
     steps:
