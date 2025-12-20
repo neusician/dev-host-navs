@@ -35,6 +35,11 @@
 
 > 项目实际页面截图（位于 `assets/host-navs-138.png`）
 
+## 在线预览
+
+- [HOST NAVS - 站导@Github Deploy](https://linshangchun.github.io/host-navs/)
+- [HOST NAVS - 站导@Vercel Deploy](https://host-navs.vercel.app/)
+
 ## 功能特性
 
 - 📄 **YAML 配置驱动** - 通过 `host.conf` 管理所有导航数据
@@ -249,7 +254,7 @@ server {
 本项目支持以下两种常见的自动部署方式：
 
 1) GitHub Pages（通过 GitHub Actions 自动将 `public/` 部署到 `gh-pages` 分支）
-2) Vercel（通过 Vercel 平台或 GitHub Actions 集成进行部署）
+2) Vercel（通过 Vercel 平台导入你的 GitHub 项目集成进行部署）
 
 ### GitHub Actions -> GitHub Pages
 
@@ -266,21 +271,6 @@ server {
 - 使用专用令牌（更可靠）：创建一个 **Fine‑grained personal access token**（或经典 PAT），只给目标仓库 `Contents: Read & write`、`Pages` 等最小权限，添加到仓库 Secrets（例如命名为 `GH_PAGES_TOKEN`），然后在工作流中将 `peaceiris/actions-gh-pages` 的 `github_token` 参数换成 `${{ secrets.GH_PAGES_TOKEN }}`。
 
 示例：在仓库设置 → **Secrets** → **Actions** 中添加 `GH_PAGES_TOKEN`，生成时建议设置过期时间并只赋最小权限。
-
----
-
-### Vercel 部署
-
-- 已添加 `vercel.json` 和示例工作流：`.github/workflows/deploy-vercel.yml`。
-- 推荐通过 Vercel 项目设置 + GitHub 集成自动部署；或者使用 GitHub Actions 将代码通过 Vercel CLI/Action 部署。
-- 使用 GitHub Actions 自动部署到 Vercel 需要在仓库 Secrets 中添加以下项：
-  - `VERCEL_TOKEN`（必需）
-  - `VERCEL_ORG_ID`（用于 `amondnet/vercel-action`，可在 Vercel 项目设置中获取）
-  - `VERCEL_PROJECT_ID`（用于 `amondnet/vercel-action`，可在 Vercel 项目设置中获取）
-
-示例（使用 `amondnet/vercel-action`）已写入 `.github/workflows/deploy-vercel.yml`，也提供了基于 `npx vercel` 的备选步骤（注释）。
-
----
 
 ## 开源协议
 
