@@ -1,0 +1,54 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 220 56">
+  <defs>
+    <!-- HOST 渐变 -->
+    <linearGradient id="hostGradient">
+      <stop offset="0%" stop-color="#7dd3fc"/>
+      <stop offset="100%" stop-color="#38bdf8"/>
+    </linearGradient>
+    
+    <!-- NAVS 渐变 -->
+    <linearGradient id="navsGradient">
+      <stop offset="0%" stop-color="#fb923c"/>
+      <stop offset="100%" stop-color="#ea580c"/>
+    </linearGradient>
+    
+    <!-- 优化后的无缝流光边框 -->
+    <!-- 我们创建一个 400% 宽度的渐变，包含了：泥陶->天青->泥陶->天青 两个完整的循环 -->
+    <linearGradient id="borderGradient" x1="0%" y1="0%" x2="200%" y2="0%">
+      <stop offset="0%" stop-color="#fb923c"/>
+      <stop offset="25%" stop-color="#38bdf8"/>
+      <stop offset="50%" stop-color="#fb923c"/>
+      <stop offset="75%" stop-color="#38bdf8"/>
+      <stop offset="100%" stop-color="#fb923c"/>
+      
+      <!-- 动画通过平移 50% 的位置，让第二个循环的起点完美接上第一个循环的起点 -->
+      <animate 
+        attributeName="x1" 
+        values="0%;-100%" 
+        dur="4s" 
+        repeatCount="indefinite" />
+      <animate 
+        attributeName="x2" 
+        values="200%;100%" 
+        dur="4s" 
+        repeatCount="indefinite" />
+    </linearGradient>
+  </defs>
+  
+  <!-- 边框 -->
+  <rect x="2" y="2" width="216" height="52" rx="12" ry="12" 
+        fill="rgba(255,255,255,0.05)" 
+        stroke="url(#borderGradient)" 
+        stroke-width="3"/>
+
+  <!-- 文字部分 -->
+  <text x="20" y="38" font-family="system-ui, -apple-system, sans-serif" 
+        font-size="30" font-weight="800" letter-spacing="-0.5" fill="url(#hostGradient)">
+    HOST
+  </text>
+  
+  <text x="118" y="38" font-family="system-ui, -apple-system, sans-serif" 
+        font-size="30" font-weight="800" letter-spacing="-0.5" fill="url(#navsGradient)">
+    NAVS
+  </text>
+</svg>

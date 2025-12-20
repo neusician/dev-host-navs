@@ -1,0 +1,13 @@
+# Vercel ignores
+
+node_modules
+.github
+.vscode
+.env
+.DS_Store
+*.log
+*.md
+README.md
+task.md
+assets
+LICENSE

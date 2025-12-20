@@ -1,0 +1,7 @@
+- 使用html，css, javascript，写一个链接导航项目，主要文件结构只有index.html和host.conf
+- host.conf是一个类yarm格式的主站信息以及链接集合配置管理，有主网站名称name，主网站简介description，链接集合navs等;
+- navs是一个数组，子元素属性有分组名称name,描述description，链接集合元素items等；
+- items也是一个数组，子元素属性有链接名称name,描述description，目的地址nav_to；
+- 根据上述描述的若干属性，组织并读取host.conf文件配置完成导航主站开发；
+- 使用Tailwindcss美化样式，网站顶部固定是站点名称和描述信息；下方全是网站内容(内容超高可滚动)，没有底部，需要多端适配；
+- 内容区固定水平最大宽度，头部是分组菜单列表，点击后下方是分组的所有链接，支持模糊搜索链接，链接有卡片和列表两种视图模式，不分页；
