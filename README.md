@@ -91,6 +91,21 @@ console_output: false
 use_text_icon: false       # true: 只使用文字图标
 use_google_favicon: false  # true: 使用 Google Favicon API
 
+# 固定快捷导航
+fixed_navs:
+  fixed:
+    top: 50%
+    right: 16px
+  items:
+    - name: GitHub
+      short_name: GIT
+      description: 代码托管平台
+      nav_to: https://github.com
+    - name: Gitee
+      short_name: GIT
+      description: 国内代码托管平台
+      nav_to: https://gitee.com
+
 # 导航分组
 navs:
   - name: 常用工具
@@ -213,10 +228,10 @@ fixed_navs:
 
 ## 技术栈
 
-- **HTML5** - 页面结构
-- **JavaScript** - 交互逻辑
-- **Tailwind CSS** - 样式框架
-- **js-yaml** - YAML 解析库
+- **HTML5** - 语义化页面结构
+- **JavaScript (ES6+)** - 核心交互逻辑
+- **Tailwind CSS** - 原子化 CSS 框架，实现高效样式开发
+- **js-yaml** - YAML 解析库，处理配置文件
 
 ## 部署
 
