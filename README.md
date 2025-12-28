@@ -6,7 +6,7 @@
 
 ## 预览
 
-```
+```text
 ╭─────────────╮
 │  HOST NAVS  │  ←  天青色 + 泥陶色 LOGO
 ╰─────────────╯
@@ -29,7 +29,6 @@
 ![HOST NAVS 预览](assets/host-navs.png)
 
 > 项目实际页面截图（位于 `assets/host-navs.png`）
-
 
 ![HOST NAVS 预览](assets/host-navs-138.png)
 
@@ -99,26 +98,33 @@ fixed_navs:
   items:
     - name: GitHub
       short_name: GIT
-      description: 代码托管平台
-      nav_to: https://github.com
+      description: 国际代码托管平台
+      nav_to: https://github.com/linshangchun/host-navs.git
     - name: Gitee
       short_name: GIT
       description: 国内代码托管平台
-      nav_to: https://gitee.com
+      nav_to: https://gitee.com/linshangchun/host-navs.git
 
 # 导航分组
 navs:
-  - name: 常用工具
-    description: 日常工作中常用的工具网站
+  - name: 代码托管
+    description: 代码仓库托管平台
     items:
       - name: GitHub
         short_name: GIT # 可选，文字图标简称（最多4字符）
-        description: GitHub代码托管平台
-        nav_to: https://github.com
-      - name: VS Code
-        short_name: CODE
-        description: VS Code开源代码编辑器
-        nav_to: https://code.visualstudio.com/
+        description: 国际代码托管平台
+        nav_to: https://github.com/linshangchun/host-navs.git
+      - name: Gitee
+        short_name: GIT
+        description: 国内代码托管平台
+        nav_to: https://gitee.com/linshangchun/host-navs.git
+  
+  - name: 代码部署
+    description: 代码构建与部署平台
+    items:
+      - name: Vercel
+        description: 提供项目云上构建和部署服务
+        nav_to: https://host-navs.vercel.app
 ```
 
 ### 配置项说明
@@ -153,29 +159,30 @@ navs:
 示例：
 
 ```yaml
-fixed_navs:
+ffixed_navs:
   fixed:
     top: 50%
     right: 16px
   items:
     - name: GitHub
       short_name: GIT
-      description: 代码托管平台
-      nav_to: https://github.com
+      description: 国际代码托管平台
+      nav_to: https://github.com/linshangchun/host-navs.git
     - name: Gitee
       short_name: GIT
       description: 国内代码托管平台
-      nav_to: https://gitee.com
+      nav_to: https://gitee.com/linshangchun/host-navs.git
 ```
 
 说明：
+
 - `fixed` 下的 `top`/`right`/`bottom`/`left` 可任选，优先级为显式设置的值；未设置则使用默认样式（默认右侧居中）。
 - 值可以为数字（会被视为像素并自动追加 `px`），也可以是字符串（如 `50%`, `2rem`, `10px`）。
 - 如果未配置 `fixed_navs` 或 `fixed_navs.items` 为空，则不会显示固定导航。
 
 ### 图标获取策略
 
-```
+```text
 ┌─────────────────────────────────────────────────┐
 │              图标配置优先级                       │
 ├─────────────────────────────────────────────────┤

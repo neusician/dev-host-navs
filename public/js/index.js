@@ -7,7 +7,7 @@ let searchKeyword = "";
 // ============ 配置加载 ============
 async function loadConfig() {
   // 可以试试138配置文件，感受项目更多的使用场景
-  // const response = await fetch("host.138.conf");
+  // const response = await fetch("138.host.conf");
   const response = await fetch("host.conf");
   if (!response.ok) {
     throw new Error(`HTTP ${response.status}: ${response.statusText}`);
