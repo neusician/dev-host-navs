@@ -6,8 +6,6 @@ let searchKeyword = "";
 
 // ============ 配置加载 ============
 async function loadConfig() {
-  // 可以试试138配置文件，感受项目更多的使用场景
-  // const response = await fetch("138.host.conf");
   const response = await fetch("host.conf");
   if (!response.ok) {
     throw new Error(`HTTP ${response.status}: ${response.statusText}`);
@@ -271,7 +269,7 @@ function renderTabs() {
                             : "bg-white text-gray-600 hover:bg-gray-100 border border-gray-200"
                         }"
                 >
-                    全部
+                    All
                     <span class="ml-1.5 px-1.5 py-0.5 rounded-full text-xs 
                         ${
                           currentGroup === -1
@@ -372,8 +370,8 @@ function renderLinks() {
   // 获取当前要显示的链接
   let items = [];
   let totalItems = 0;
-  let navName = "全部";
-  let navDescription = "显示所有分组的链接";
+  let navName = "All";
+  let navDescription = "Show all links from all groups | 显示所有分组的链接";
 
   if (currentGroup === -1) {
     // 显示全部链接

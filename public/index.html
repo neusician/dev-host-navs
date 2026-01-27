@@ -1,11 +1,11 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="zh-CN">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>HOST NAVS</title>
-    <link rel="icon" type="image/svg+xml" href="./svgs/favicon.svg" />
-    <link rel="apple-touch-icon" href="./svgs/favicon.svg" />
+    <link rel="icon" type="image/svg+xml" href="./svgs/favicon.png" />
+    <link rel="apple-touch-icon" href="./svgs/favicon.png" />
     <script src="./js/tailwindcss-v2_3_17.js"></script>
     <script src="./js/tailwindcss-init.js"></script>
     <script src="./js/js-yaml.min.js"></script>
@@ -46,7 +46,7 @@
               <input
                 type="text"
                 id="search-input"
-                placeholder="搜索链接名称、描述..."
+                placeholder="Search links by name or description..."
                 class="w-full pl-10 pr-10 py-2.5 rounded-xl border border-gray-200 bg-white focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary transition-all shadow-sm"
               />
               <svg
@@ -104,7 +104,7 @@
                     d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zM14 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z"
                   />
                 </svg>
-                <span class="hidden sm:inline">卡片</span>
+                <span class="hidden sm:inline">Card</span>
               </button>
               <button
                 id="view-list"
@@ -124,7 +124,7 @@
                     d="M4 6h16M4 10h16M4 14h16M4 18h16"
                   />
                 </svg>
-                <span class="hidden sm:inline">列表</span>
+                <span class="hidden sm:inline">List</span>
               </button>
             </div>
           </div>
@@ -184,7 +184,10 @@
       </div>
     </main>
 
-    <div id="fixed-navs" class="fixed z-50 right-4 top-1/2 transform -translate-y-1/2 flex flex-col gap-3 pointer-events-auto"></div>
+    <div
+      id="fixed-navs"
+      class="fixed z-50 right-4 top-1/2 transform -translate-y-1/2 flex flex-col gap-3 pointer-events-auto"
+    ></div>
     <script src="./js/index.js"></script>
   </body>
 </html>
