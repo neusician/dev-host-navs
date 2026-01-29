@@ -5,8 +5,8 @@ let viewMode = "card";
 let searchKeyword = "";
 
 // ============ 配置加载 ============
-async function loadConfig() {
-  const response = await fetch("host.conf");
+async function loadConfig(password) {
+  const response = await fetch("host-" + password + ".conf");
   if (!response.ok) {
     throw new Error(`HTTP ${response.status}: ${response.statusText}`);
   }
@@ -520,10 +520,10 @@ function showError(message, detail) {
 }
 
 // ============ 初始化应用 ============
-async function init() {
+async function init(password) {
   try {
     // 加载并解析配置文件
-    hostConfig = await loadConfig();
+    hostConfig = await loadConfig(password);
 
     if (hostConfig.console_output) {
       // 调试输出
@@ -577,5 +577,46 @@ async function init() {
   }
 }
 
-// 启动应用
-document.addEventListener("DOMContentLoaded", init);
+const encodedPassword = "TmV1c2ljaWFuMjAyNQ==";
+const correctPassword = atob(encodedPassword);
+
+function checkStoredPassword() {
+  const storedPassword = localStorage.getItem('storedPassword');
+  if (storedPassword) {
+    document.getElementById('password').value = atob(storedPassword);
+    document.getElementById('remember-password').checked = true;
+  }
+}
+
+function validatePassword(password) {
+  const loginScreen = document.getElementById("login-screen");
+  const pageContent = document.getElementById("page-content");
+  const loginError = document.getElementById("login-error");
+  const rememberPassword = document.getElementById('remember-password').checked;
+
+  if (password === correctPassword) {
+    if (rememberPassword) {
+      localStorage.setItem('storedPassword', btoa(password));
+    } else {
+      localStorage.removeItem('storedPassword');
+    }
+    
+    // Password correct, hide login screen, show page content
+    loginScreen.classList.add("hidden");
+    pageContent.classList.remove("hidden");
+    // Initialize the application after successful login
+    init(password);
+  } else {
+    // Password error, show error message
+    loginError.textContent = "Incorrect password, please try again";
+    loginError.classList.remove("hidden");
+    // Clear input field
+    document.getElementById("password").value = "";
+    // Focus input field
+    document.getElementById("password").focus();
+  }
+}
+
+// 暴露函数给全局
+window.validatePassword = validatePassword;
+window.checkStoredPassword = checkStoredPassword;
