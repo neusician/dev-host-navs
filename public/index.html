@@ -251,6 +251,7 @@
         class="fixed z-50 right-4 top-1/2 transform -translate-y-1/2 flex flex-col gap-3 pointer-events-auto"
       ></div>
     </div>
+    <script src="./js/index.js"></script>
     <script>
       // Login event listeners
       document.addEventListener("DOMContentLoaded", function () {
@@ -259,25 +260,26 @@
 
         // Check for stored password
         if (window.checkStoredPassword) {
-          checkStoredPassword();
-          if (passwordInput.value) {
-            validatePassword(passwordInput.value);
+          window.checkStoredPassword();
+          if (passwordInput.value && window.validatePassword) {
+            window.validatePassword(passwordInput.value);
           }
         }
 
         // Login button click event
         loginBtn.addEventListener("click", function () {
-          validatePassword(passwordInput.value);
+          if (window.validatePassword) {
+            window.validatePassword(passwordInput.value);
+          }
         });
 
         // Enter key login
         passwordInput.addEventListener("keypress", function (e) {
-          if (e.key === "Enter") {
-            validatePassword(passwordInput.value);
+          if (e.key === "Enter" && window.validatePassword) {
+            window.validatePassword(passwordInput.value);
           }
         });
       });
     </script>
-    <script src="./js/index.js"></script>
   </body>
 </html>

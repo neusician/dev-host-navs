@@ -620,3 +620,4 @@ function validatePassword(password) {
 // 暴露函数给全局
 window.validatePassword = validatePassword;
 window.checkStoredPassword = checkStoredPassword;
+window.init = init;
